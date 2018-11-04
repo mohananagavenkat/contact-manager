@@ -1,0 +1,20 @@
+.form-wrapper {
+  min-height: 100vh;
+}
+
+.form-wrapper form {
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+  padding: 4rem;
+}
+
+.form-heading {
+  margin-top: 0px;
+}
+
+@media screen and (max-width: 578px) {
+  .form-wrapper form {
+    padding: 2rem;
+  }
+}

@@ -1,0 +1,31 @@
+<header>
+  <button (click)="showSidenav($event)" class="show-sidenav material-icons">menu</button>
+  <h1 class="brand-name">Contact Manager</h1>
+</header>
+<aside (click)="handleOutsideClick($event)" #sidenavContainer class="mysidenav-container">
+  <nav #sidenav class="mysidenav visible">
+    <div class="mysidenav-header">
+      <div class="cover-image">
+        <img class="img-responsive" src="https://scontent.fmaa2-1.fna.fbcdn.net/v/t1.0-9/20621092_2093657740865160_5492800080235222927_n.jpg?_nc_cat=100&_nc_ht=scontent.fmaa2-1.fna&oh=23f1f466b3ce61c1e4c2dc9c0b9dde66&oe=5C8824B5"
+          alt="Cover Photo">
+      </div>
+      <div class="profile-wrapper">
+        <div class="profile-image">
+          <img class="img-responsive" src="https://scontent.fmaa2-2.fna.fbcdn.net/v/t31.0-8/25189074_2185298898367710_7214384127023418311_o.jpg?_nc_cat=110&_nc_ht=scontent.fmaa2-2.fna&oh=804e5258af5a3cfa5a96ea1ce43669ca&oe=5C7AB2AC"
+            alt="Profile photo">
+        </div>
+        <p>Mohana Naga Venkat. Sayempu</p>
+        <p>mohananagavenkat@gmail.com</p>
+      </div>
+      <button (click)="hideSidenav($event)" class="hide-sidenav material-icons">close</button>
+    </div>
+    <ul class="mynav">
+      <li *ngFor="let navlink of navlinks">
+        <a [routerLink]="navlink.link" href="#"> <i class="material-icons">{{ navlink.icon }}</i> {{ navlink.name }}</a>
+      </li>
+      <!-- <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+      <li><a href="#">Four</a></li> -->
+    </ul>
+  </nav>
+</aside>
