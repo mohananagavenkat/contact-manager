@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "https://fonts.googleapis.com/css?family=Lato|Raleway|Roboto"; */
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-column {
+  flex-direction: column;
+}
+.w-100 {
+  width: 100%;
+}
+.vh-100 {
+  min-height: 100vh;
+}
