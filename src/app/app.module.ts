@@ -12,6 +12,7 @@ import { ResetPasswordComponent } from "./components/reset-password/reset-passwo
 import { UserActivationEmailNotifingComponent } from "./components/user-activation-email-notifing/user-activation-email-notifing.component";
 import { ForgotPasswordEmailNotifingComponent } from "./components/forgot-password-email-notifing/forgot-password-email-notifing.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
+import { ContactsListComponent } from './components/contacts-list/contacts-list.component';
 
 const appRoutes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/signup" },
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     ResetPasswordComponent,
     UserActivationEmailNotifingComponent,
     ForgotPasswordEmailNotifingComponent,
-    NavbarComponent
+    NavbarComponent,
+    ContactsListComponent
   ],
   imports: [
     BrowserModule,
