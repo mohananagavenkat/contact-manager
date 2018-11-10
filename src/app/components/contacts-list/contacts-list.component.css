@@ -1,0 +1,147 @@
+.contacts-wrapper {
+  width: 100%;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+.contacts-header {
+  display: flex;
+  border-bottom: 1px solid lightgray;
+}
+.contacts-header > * {
+  font-weight: bold;
+  padding: 1rem;
+}
+.each-contact {
+  display: flex;
+  align-items: center;
+}
+.each-contact:hover,
+.each-contact:focus,
+.each-contact.has-focus {
+  background: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+.each-contact > * {
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+.contacts-header > *,
+.each-contact > * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.each-contact > .name > .contact-image,
+.each-contact > .name > .contact-image > img,
+.each-contact > .name > .contact-letter {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 3rem;
+}
+.each-contact > .name > .contact-letter {
+  background: rgb(123, 31, 162);
+  color: #fff;
+  font-size: 1.2rem;
+}
+.each-contact > .name > span {
+  margin-left: 0.5rem;
+}
+
+.each-contact span {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contacts-header > div:nth-child(1),
+.each-contact > div:nth-child(1) {
+  flex-basis: 25%;
+}
+.contacts-header > div:nth-child(2),
+.each-contact > div:nth-child(2) {
+  flex-basis: 25%;
+}
+.contacts-header > div:nth-child(3),
+.each-contact > div:nth-child(3) {
+  flex-basis: 15%;
+}
+.contacts-header > div:nth-child(4),
+.each-contact > div:nth-child(4) {
+  flex-basis: 20%;
+}
+.contacts-header > div:nth-child(5),
+.each-contact > div:nth-child(5) {
+  flex-basis: 15%;
+}
+
+.actions button {
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  margin-right: 4px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: none;
+}
+.actions button:hover,
+.actions button:focus,
+.actions button:active,
+.actions button:focus:active {
+  background: lightgray;
+}
+.actions button i {
+  font-size: 1.25rem;
+}
+.each-contact:hover .actions button,
+.each-contact.has-focus .actions button {
+  display: initial;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575px) {
+  .contacts-header > *,
+  .each-contact > * {
+    flex: 1;
+  }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .contacts-header > *,
+  .each-contact > * {
+    flex: 1;
+  }
+  .contacts-header > *:last-child {
+    text-align: center;
+  }
+  .each-contact > *:last-child {
+    justify-content: center;
+  }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .contacts-header > *,
+  .each-contact > * {
+    flex: 1;
+  }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .contacts-header > *,
+  .each-contact > * {
+    flex: 1;
+  }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+
+*:focus {
+  outline: 1px solid lightblue;
+}
