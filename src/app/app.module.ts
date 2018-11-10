@@ -12,7 +12,9 @@ import { ResetPasswordComponent } from "./components/reset-password/reset-passwo
 import { UserActivationEmailNotifingComponent } from "./components/user-activation-email-notifing/user-activation-email-notifing.component";
 import { ForgotPasswordEmailNotifingComponent } from "./components/forgot-password-email-notifing/forgot-password-email-notifing.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
-import { ContactsListComponent } from './components/contacts-list/contacts-list.component';
+import { ContactsListComponent } from "./components/contacts-list/contacts-list.component";
+import { ContactComponent } from "./components/contacts-list/contact/contact.component";
+import { ColorService } from "./services/color.service";
 
 const appRoutes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/signup" },
@@ -31,6 +33,7 @@ const appRoutes: Routes = [
     component: UserActivationEmailNotifingComponent
   },
   { path: "navbar", component: NavbarComponent },
+  { path: "contacts", component: ContactsListComponent },
   { path: "404", component: NotFoundComponent },
   { path: "**", redirectTo: "/404" }
 ];
@@ -46,7 +49,8 @@ const appRoutes: Routes = [
     UserActivationEmailNotifingComponent,
     ForgotPasswordEmailNotifingComponent,
     NavbarComponent,
-    ContactsListComponent
+    ContactsListComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [ColorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
