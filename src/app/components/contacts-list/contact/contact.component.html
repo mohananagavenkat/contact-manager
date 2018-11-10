@@ -1,0 +1,33 @@
+<div (focus)="onContactFocus($event)" class="each-contact" tabindex="0">
+  <div class="name">
+    <div *ngIf="contact.avatar" class="contact-image">
+      <img src="/assets/img/profilepic.jpg" alt="">
+    </div>
+    <div [style.backgroundColor]="background" *ngIf="!contact.avatar" class="contact-letter">
+      {{ contact.firstName.charAt(0) }}
+    </div>
+    <span tabindex="0" role="button">{{ contact.firstName + " " + (contact.lastName ? contact.lastName : "") }}</span>
+  </div>
+  <div *ngIf="canDisplay.email" class="email"><span tabindex="0" role="button">{{ contact.email ? contact.email : "" }}</span></div>
+  <div *ngIf="canDisplay.phoneNumber" class="mobile"><span tabindex="0" role="button"> {{ contact.phoneNumber ? contact.phoneNumber
+      : "" }} </span></div>
+  <div *ngIf="canDisplay.job" class="job"><span>{{ (contact.job ? contact.job :"") + " " + (contact.company ? contact.company
+      :"") }}</span>
+  </div>
+  <div *ngIf="canDisplay.actions" class="actions">
+    <button><i class="material-icons">star</i></button>
+    <button><i class="material-icons">edit</i></button>
+    <button><i class="material-icons">more_vert</i></button>
+  </div>
+</div>
+
+<!-- const moreOptionsDropdown = `
+<ul class="more-options">
+  <li><a href="#">Option1</a></li>
+  <li><a href="#">Option2</a></li>
+  <li><a href="#">Option3</a></li>
+</ul>
+`; const button = document.querySelector("button"); button.addEventListener("click",function(event){ console.log("more options
+added to dom"); this.innerHTML += moreOptionsDropdown; event.stopPropagation(); }); document.addEventListener("click",function(event){
+console.log("document clicked"); if( ( ele = document.querySelector('.more-options') ) && event.target != ele ){ console.log("more
+options found and removed"); ele.parentElement.removeChild(ele); } }) -->
