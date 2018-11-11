@@ -1,26 +1,55 @@
-import { Component, OnInit, HostListener } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  HostListener,
+  ViewEncapsulation
+} from "@angular/core";
 import { Contact } from "../../interfaces/contact";
 import { contactsData } from "../../data/contacts.data";
+import { ContactService } from "../../services/contact.service";
 
 @Component({
   selector: "app-contacts-list",
   templateUrl: "./contacts-list.component.html",
-  styleUrls: ["./contacts-list.component.css"]
+  styleUrls: ["./contacts-list.component.css"],
+  encapsulation: ViewEncapsulation.None
 })
 export class ContactsListComponent implements OnInit {
   contacts: Contact[];
   canDisplay;
-  constructor() {}
+  constructor(private contactService: ContactService) {}
 
   ngOnInit() {
-    this.contacts = contactsData;
-    console.log(this.contacts);
+    //this.contacts = contactsData;
+    this.getContacts();
     this.updateDisplayStatus(window.screen.availWidth);
   }
 
   @HostListener("window:resize", ["$event"])
   onresize(event) {
     this.updateDisplayStatus(window.screen.availWidth);
+  }
+
+  @HostListener("document:click", ["$event"])
+  closePreviousMore(event) {
+    console.log(event);
+    const ele = document.querySelector(".more-options.show");
+    if (ele) {
+      ele.classList.remove("show");
+    }
+  }
+
+  getContacts() {
+    this.contactService.getContacts().subscribe(
+      contacts => {
+        console.log("contacts fetched successfully");
+        this.contacts = contacts;
+        console.log(contacts);
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
   updateDisplayStatus(width) {

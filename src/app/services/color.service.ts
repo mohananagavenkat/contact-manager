@@ -27,7 +27,7 @@ export class ColorService {
   constructor() {}
 
   getColor() {
-    console.log(Math.floor(Math.random() * this.colors.length));
+    // console.log(Math.floor(Math.random() * this.colors.length));
     return this.colors[Math.floor(Math.random() * this.colors.length)];
   }
 

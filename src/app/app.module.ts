@@ -2,6 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
 import { SignupComponent } from "./components/signup/signup.component";
@@ -15,6 +16,9 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { ContactsListComponent } from "./components/contacts-list/contacts-list.component";
 import { ContactComponent } from "./components/contacts-list/contact/contact.component";
 import { ColorService } from "./services/color.service";
+import { StarComponent } from './components/star/star.component';
+import { EditComponent } from './components/edit/edit.component';
+import { MoreComponent } from './components/more/more.component';
 
 const appRoutes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/signup" },
@@ -50,13 +54,17 @@ const appRoutes: Routes = [
     ForgotPasswordEmailNotifingComponent,
     NavbarComponent,
     ContactsListComponent,
-    ContactComponent
+    ContactComponent,
+    StarComponent,
+    EditComponent,
+    MoreComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [ColorService],
   bootstrap: [AppComponent]

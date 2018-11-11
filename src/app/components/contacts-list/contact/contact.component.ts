@@ -11,6 +11,9 @@ export class ContactComponent implements OnInit, OnChanges {
   @Input("contact")
   contact: Contact;
 
+  @Input("i")
+  i: number;
+
   @Input("canDisplay")
   canDisplay;
 
@@ -21,15 +24,15 @@ export class ContactComponent implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges() {
-    console.log(this.contact.avatar);
-    console.log(this.colorService);
+    //console.log(this.contact.avatar);
+    // console.log(this.colorService);
     if (!this.contact.avatar) {
       this.background = this.colorService.getColor();
     }
-    console.log(this.background);
+    // console.log(this.background);
   }
   onContactFocus(event) {
-    console.log("clicked");
+    // console.log("clicked");
     const ele = document.querySelector(".each-contact.has-focus");
     if (ele) {
       ele.classList.remove("has-focus");
