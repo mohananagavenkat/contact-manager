@@ -1,0 +1,8 @@
+<button (click)="onMoreOptions($event)">
+  <i class="material-icons">more_vert</i>
+</button>
+<ul class="more-options">
+  <li><a [routerLink]="['/', 'contact', contactId]">Option1</a></li>
+  <li><a [routerLink]="['/', 'contact', contactId]">Option2</a></li>
+  <li><a [routerLink]="['/', 'contact', contactId]">Option3</a></li>
+</ul>

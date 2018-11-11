@@ -1,0 +1,42 @@
+:host {
+  position: relative;
+  background: #000;
+}
+button {
+  position: relative;
+}
+.more-options {
+  position: fixed;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  top: 0px;
+  left: 0px;
+  width: 200px;
+  display: none;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+
+.more-options.show {
+  display: block;
+}
+
+.more-options li {
+  display: block;
+}
+
+.more-options li a {
+  display: block;
+  padding: 12px;
+  white-space: no-wrap;
+  text-align: left;
+  text-decoration: none;
+  color: gray;
+  font-size: 1rem;
+}
+.more-options li a:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
