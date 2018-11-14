@@ -54,7 +54,15 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {}
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() {
+    const mynav = document.querySelector(".mynav");
+    mynav.addEventListener("click", event => {
+      if ((<HTMLElement>event.target).nodeName == "A") {
+        console.log(this);
+        this.hideSidenav();
+      }
+    });
+  }
 
   showSidenav() {
     console.log("showing sidenav");
@@ -70,7 +78,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   handleOutsideClick(event) {
-    console.log(event.target, event.currentTarget);
     if (event.target === event.currentTarget) {
       this.hideSidenav();
     }

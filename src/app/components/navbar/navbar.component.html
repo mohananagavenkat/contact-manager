@@ -1,29 +1,49 @@
 <header>
-  <button (click)="showSidenav($event)" class="show-sidenav material-icons">menu</button>
+  <button (click)="showSidenav($event)" class="show-sidenav material-icons">
+    menu
+  </button>
   <h1 class="brand-name">Contact Manager</h1>
 </header>
-<aside (click)="handleOutsideClick($event)" #sidenavContainer class="mysidenav-container">
-  <nav #sidenav class="mysidenav visible">
+<aside
+  (click)="handleOutsideClick($event)"
+  #sidenavContainer
+  class="mysidenav-container"
+>
+  <nav #sidenav class="mysidenav sidenav-animatable">
     <div class="mysidenav-header">
       <div class="cover-image">
-        <img class="img-responsive" src="/assets/img/coverpic.jpg" alt="Cover Photo">
+        <img
+          class="img-responsive"
+          src="/assets/img/coverpic.jpg"
+          alt="Cover Photo"
+        />
       </div>
       <div class="profile-wrapper">
         <div class="profile-image">
-          <img class="img-responsive" src="/assets/img/profilepic.jpg" alt="Profile photo">
+          <img
+            class="img-responsive"
+            src="/assets/img/profilepic.jpg"
+            alt="Profile photo"
+          />
         </div>
         <p>Mohana Naga Venkat. Sayempu</p>
         <p>mohananagavenkat@gmail.com</p>
       </div>
-      <button (click)="hideSidenav($event)" class="hide-sidenav material-icons">close</button>
+      <button (click)="hideSidenav($event)" class="hide-sidenav material-icons">
+        close
+      </button>
     </div>
     <ul class="mynav">
       <li *ngFor="let navlink of navlinks">
-        <a [routerLink]="navlink.link" href="#"> <i class="material-icons">{{ navlink.icon }}</i> {{ navlink.name }}</a>
+        <a [routerLink]="navlink.link" href="#">
+          <i class="material-icons">{{ navlink.icon }}</i> {{ navlink.name }}</a
+        >
       </li>
-      <!-- <li><a href="#">Two</a></li>
-      <li><a href="#">Three</a></li>
-      <li><a href="#">Four</a></li> -->
+      <!--
+        <li><a href="#">Two</a></li>
+        <li><a href="#">Three</a></li>
+        <li><a href="#">Four</a></li>
+      -->
     </ul>
   </nav>
 </aside>
