@@ -1,0 +1,100 @@
+<app-navbar></app-navbar>
+<div class="form-wrapper flex-center">
+  <form
+    (ngSubmit)="addContact()"
+    #addContactForm="ngForm"
+    class="col s12 z-depth-2"
+  >
+    <h3 class="center-align teal-text form-heading m-0">New Contact</h3>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <input
+          id="firstName"
+          name="firstName"
+          ngModel
+          type="text"
+          class="validate"
+          required
+          #firstName="ngModel"
+        />
+        <label for="firstName">First Name</label>
+        <span class="red-text" *ngIf="firstName.touched && firstName.invalid"
+          >Phone Number Required</span
+        >
+      </div>
+      <div class="input-field col s12 m6">
+        <input
+          id="lastName"
+          name="lastName"
+          ngModel
+          type="text"
+          class="validate"
+        />
+        <label for="lastName">Last Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" name="email" ngModel type="email" class="validate" />
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input
+          id="phoneNumber"
+          name="phoneNumber"
+          ngModel
+          type="text"
+          class="validate"
+          required
+          #phoneNumber="ngModel"
+        />
+        <label for="phoneNumber">Phone Number</label>
+        <span
+          class="red-text"
+          *ngIf="phoneNumber.touched && phoneNumber.invalid"
+          >Phone Number Required</span
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <input
+          id="company"
+          name="company"
+          ngModel
+          type="text"
+          class="validate"
+        />
+        <label for="company">Company</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <input id="job" name="job" ngModel type="text" class="validate" />
+        <label for="job">Job</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea
+          name="notes"
+          class="materialize-textarea validate"
+          id="notes"
+          ngModel
+        ></textarea>
+        <label for="notes">Notes</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <button
+          [disabled]="addContactForm.invalid"
+          class="btn w-100"
+          type="submit"
+        >
+          Submit <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

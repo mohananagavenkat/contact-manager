@@ -1,8 +1,5 @@
-import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { RouterModule, Routes } from "@angular/router";
-import { HttpClientModule } from "@angular/common/http";
+import { Routes, RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { SignupComponent } from "./components/signup/signup.component";
@@ -45,31 +42,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignupComponent,
-    SigninComponent,
-    NotFoundComponent,
-    ForgotPasswordComponent,
-    ResetPasswordComponent,
-    UserActivationEmailNotifingComponent,
-    ForgotPasswordEmailNotifingComponent,
-    NavbarComponent,
-    ContactsListComponent,
-    ContactComponent,
-    StarComponent,
-    EditComponent,
-    MoreComponent,
-    AddContactComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
-    HttpClientModule
-  ],
-  providers: [ColorService],
-  bootstrap: [AppComponent]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule]
 })
-export class AppModule {}
+export class AppRoutingModule {}
