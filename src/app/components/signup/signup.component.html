@@ -1,45 +1,52 @@
 <div class="form-wrapper flex-center">
-  <form class="col s12 z-depth-2">
-    <h3 class="center-align teal-text form-heading m-0">Signup
-    </h3>
+  <form (ngSubmit)="signup($event)" class="col s12 z-depth-2" #signupForm="ngForm">
+    <h3 class="center-align teal-text form-heading m-0">Signup</h3>
     <div class="row">
       <div class="input-field col s12 m6">
-        <input id="firstName" type="text" class="validate">
+        <input id="firstName" name="firstName" type="text" class="validate" required #firstName="ngModel" ngModel />
         <label for="firstName">First Name</label>
+        <span *ngIf=" firstName.invalid && firstName.touched " class="red-text">Firstname is required</span>
       </div>
       <div class="input-field col s12 m6">
-        <input id="lastName" type="text" class="validate">
+        <input id="lastName" name="lastName" type="text" class="validate" required #lastName="ngModel" ngModel />
         <label for="lastName">Last Name</label>
+        <span *ngIf=" lastName.invalid && lastName.touched " class="red-text">Lastname is required</span>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="email" type="email" class="validate">
+        <input id="email" name="email" type="email" class="validate" required email #email="ngModel" ngModel />
         <label for="email">Email</label>
+        <span *ngIf=" email.invalid && email.touched " class="red-text">Email is required and should be valid email</span>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="password" type="password" class="validate">
+        <input id="password" name="password" type="password" class="validate" required #password="ngModel" ngModel />
         <label for="password">Password</label>
+        <span *ngIf=" password.invalid && password.touched " class="red-text">Password is required</span>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="confirmPassword" type="password" class="validate">
+        <input id="confirmPassword" name="confirmPassword" type="password" class="validate" required #confirmPassword="ngModel" ngModel
+        />
         <label for="confirmPassword">Confirm Password</label>
+        <span *ngIf=" confirmPassword.invalid && confirmPassword.touched " class="red-text">Confirm Password is required</span>
+        <span *ngIf=" confirmPassword.dirty && ( confirmPassword.value != password.value ) " class="red-text">Password and
+          Confirmpassword should be same</span>
       </div>
     </div>
     <div class="row">
       <div class="col s12">
-        <button class="btn w-100" type="submit">Submit
-          <i class="material-icons right">send</i>
+        <button [disabled]="signupForm.invalid || ( confirmPassword.value != password.value )" class="btn w-100" type="submit">
+          Submit <i class="material-icons right">send</i>
         </button>
       </div>
     </div>
     <div class="row">
       <div class="col s12 center-align">
-        Have an account? <a [routerLink]="['/','signin']" href="#">Signin</a>
+        Have an account? <a [routerLink]="['/', 'signin']" href="#">Signin</a>
       </div>
     </div>
   </form>

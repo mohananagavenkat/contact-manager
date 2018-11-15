@@ -1,5 +1,7 @@
-import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { Component, OnInit, AfterViewInit, ViewChild } from "@angular/core";
 import * as M from "materialize-css/dist/js/materialize";
+import { NgForm } from "@angular/forms";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: "app-signup",
@@ -7,11 +9,22 @@ import * as M from "materialize-css/dist/js/materialize";
   styleUrls: ["../auth-forms.css"]
 })
 export class SignupComponent implements OnInit, AfterViewInit {
-  constructor() {}
 
-  ngOnInit() {}
+  @ViewChild('signupForm') signupForm: NgForm;
+
+  constructor(
+    private authService: AuthService
+  ) { }
+
+  ngOnInit() { }
 
   ngAfterViewInit() {
     M.updateTextFields();
   }
+
+  signup() {
+    // console.log(this.signupForm.value);
+    this.authService.signup(this.signupForm.value);
+  }
+
 }
