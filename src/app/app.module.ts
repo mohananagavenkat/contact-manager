@@ -23,10 +23,10 @@ import { AddContactComponent } from "./components/contacts-list/add-contact/add-
 
 const appRoutes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/signup" },
-  { path: "signup", component: SignupComponent },
-  { path: "signin", component: SigninComponent },
-  { path: "register", pathMatch: "full", redirectTo: "/signup" },
-  { path: "login", pathMatch: "full", redirectTo: "/signin" },
+  { path: "user/signup", component: SignupComponent },
+  { path: "user/signin", component: SigninComponent },
+  { path: "user/register", pathMatch: "full", redirectTo: "/signup" },
+  { path: "user/login", pathMatch: "full", redirectTo: "/signin" },
   { path: "forgot-password", component: ForgotPasswordComponent },
   { path: "reset-password", component: ResetPasswordComponent },
   {
@@ -72,4 +72,4 @@ const appRoutes: Routes = [
   providers: [ColorService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
