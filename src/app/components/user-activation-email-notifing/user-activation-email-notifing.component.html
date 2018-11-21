@@ -1,14 +1,22 @@
 <div class="vh-100 flex-center">
   <div class="row">
     <div class="col s12">
+      <div *ngIf=" error != '' && error " class="error">
+        {{ error | capitalize }}
+      </div>
+      <div *ngIf=" success != '' && success " class="success">
+        {{ success | capitalize }}
+      </div>
       <div class="card">
         <div class="card-content">
           <p>We have sent an activation link to your email. Please activate your account before proceeding.(Please check
             in your spam folder also and report as unspam)
           </p>
+          <p>Didn't receive an email. <span (click)="resendActivationToken()" class="resend">Click here to resend email.</span>
+          </p>
         </div>
         <div class="card-action center-align">
-          <a [routerLink]="['/','signin']" href="#">Signin</a>
+          <a [routerLink]="['/','user','signin']" href="#">Signin</a>
         </div>
       </div>
     </div>
