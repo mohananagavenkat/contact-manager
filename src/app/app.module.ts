@@ -20,9 +20,10 @@ import { StarComponent } from "./components/star/star.component";
 import { EditComponent } from "./components/edit/edit.component";
 import { MoreComponent } from "./components/more/more.component";
 import { AddContactComponent } from "./components/contacts-list/add-contact/add-contact.component";
+import { CapitalizePipe } from './pipes/capitalize.pipe';
 
 const appRoutes: Routes = [
-  { path: "", pathMatch: "full", redirectTo: "/signup" },
+  { path: "", pathMatch: "full", redirectTo: "user/signup" },
   { path: "user/signup", component: SignupComponent },
   { path: "user/signin", component: SigninComponent },
   { path: "user/register", pathMatch: "full", redirectTo: "/signup" },
@@ -60,7 +61,8 @@ const appRoutes: Routes = [
     StarComponent,
     EditComponent,
     MoreComponent,
-    AddContactComponent
+    AddContactComponent,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,
