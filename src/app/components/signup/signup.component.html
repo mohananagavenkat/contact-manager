@@ -1,6 +1,9 @@
-<div class="form-wrapper flex-center">
+<div *ngIf="!signupStatus" class="form-wrapper flex-center">
   <form (ngSubmit)="signup($event)" class="col s12 z-depth-2" #signupForm="ngForm">
     <h3 class="center-align teal-text form-heading m-0">Signup</h3>
+    <div *ngIf=" error != '' && error " class="error">
+      {{ error | capitalize }}
+    </div>
     <div class="row">
       <div class="input-field col s12 m6">
         <input id="firstName" name="firstName" type="text" class="validate" required #firstName="ngModel" ngModel />
@@ -51,3 +54,4 @@
     </div>
   </form>
 </div>
+<app-user-activation-email-notifing *ngIf="signupStatus" [tokenId]="tokenId"></app-user-activation-email-notifing>
