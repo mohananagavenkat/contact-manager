@@ -1,17 +1,26 @@
 <div class="form-wrapper flex-center">
-  <form class="col s12 z-depth-2">
+  <form (ngSubmit)="signin()" [formGroup]="signinForm" class="col s12 z-depth-2">
     <h3 class="center-align teal-text form-heading m-0">Signin
     </h3>
+    <div *ngIf=" error != '' && error " class="error">
+      {{ error | capitalize }}
+    </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="email" type="email" class="validate">
+        <input id="email" type="email" class="validate" formControlName="email">
         <label for="email">Email</label>
+        <span *ngIf=" signinForm.get('email').touched && signinForm.get('email').hasError('required') " class="red-text">Email
+          is required</span>
+        <span *ngIf=" signinForm.get('email').dirty && signinForm.get('email').hasError('email') " class="red-text">Email
+          should be a valid email</span>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="password" type="password" class="validate">
+        <input id="password" type="password" class="validate" formControlName="password">
         <label for="password">Password</label>
+        <span *ngIf=" signinForm.get('password').touched && signinForm.get('password').hasError('required') " class="red-text">Password
+          is required</span>
       </div>
     </div>
     <div class="row">
@@ -27,7 +36,7 @@
     </div>
     <div class="row">
       <div class="col s12">
-        <button class="btn w-100" type="submit">Submit
+        <button [disabled]="signinForm.invalid" class="btn w-100" type="submit">Submit
           <i class="material-icons right">send</i>
         </button>
       </div>
@@ -39,3 +48,4 @@
     </div>
   </form>
 </div>
+<app-user-activation-email-notifing *ngIf="showUserActivationEmailNotification" [tokenId]="tokenId"></app-user-activation-email-notifing>
