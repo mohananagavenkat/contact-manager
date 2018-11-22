@@ -1,9 +1,12 @@
-<div class="form-wrapper flex-center">
+<div *ngIf="!showUserActivationEmailNotification" class="form-wrapper flex-center">
   <form (ngSubmit)="signin()" [formGroup]="signinForm" class="col s12 z-depth-2">
     <h3 class="center-align teal-text form-heading m-0">Signin
     </h3>
-    <div *ngIf=" error != '' && error " class="error">
+    <div *ngIf="!resendActivation && error != '' && error " class="error">
       {{ error | capitalize }}
+    </div>
+    <div *ngIf="resendActivation" class="error">
+      Your Account Is Not Activated. <span (click)="resendActivationToken()">Click Here To Resend Email</span>
     </div>
     <div class="row">
       <div class="input-field col s12">

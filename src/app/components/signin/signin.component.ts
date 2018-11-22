@@ -12,6 +12,7 @@ export class SigninComponent implements OnInit {
   error: string;
   tokenId: any;
   showUserActivationEmailNotification: boolean = false;
+  resendActivation: boolean = false;
   constructor(
     private authService: AuthService
   ) { }
@@ -33,11 +34,28 @@ export class SigninComponent implements OnInit {
       .signin(this.signinForm.value)
       .subscribe(
         (response) => {
-          if (response.status == false) {
+          if (!response.data && response.status == false) {
             this.error = response.error;
             return;
           }
+          else if (response.data && response.data.tokenId) {
+            this.resendActivation = true;
+            this.tokenId = response.data.tokenId;
+          }
         }
       )
+  }
+
+  resendActivationToken() {
+    this.authService
+      .resendActivationToken(this.tokenId)
+      .subscribe((response) => {
+        console.log(response);
+        if (response.status == false) {
+          this.error = response.error;
+          return;
+        }
+        this.showUserActivationEmailNotification = true;
+      })
   }
 }
