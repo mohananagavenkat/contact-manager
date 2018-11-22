@@ -13,16 +13,9 @@ export class AuthService {
   ) { }
 
   signup(data): Observable<any> {
-    console.log("sending signup request to the api");
-    console.log(data);
     return this.http.post(
       `${appConfig.apiDomain}/user/signup`,
       data,
-      {
-        headers: new HttpHeaders({
-          'Content-Type': "application/json"
-        })
-      }
     );
   }
 
@@ -35,6 +28,10 @@ export class AuthService {
 
   resendActivationToken(tokenId): Observable<any> {
     return this.http.get<any>(`${appConfig.apiDomain}/user/resend/activationtoken/${tokenId}`)
+  }
+
+  activateUser(token): Observable<any> {
+    return this.http.get<any>(`${appConfig.apiDomain}/user/activate/${token}`);
   }
 
 }
