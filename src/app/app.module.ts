@@ -1,8 +1,9 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { RouterModule, Routes } from "@angular/router";
+// import { RouterModule, Routes } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
+import { AppRoutingModule } from "./app-routing.module";
 
 import { AppComponent } from "./app.component";
 import { SignupComponent } from "./components/signup/signup.component";
@@ -21,29 +22,30 @@ import { EditComponent } from "./components/edit/edit.component";
 import { MoreComponent } from "./components/more/more.component";
 import { AddContactComponent } from "./components/contacts-list/add-contact/add-contact.component";
 import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { UserActivationComponent } from './components/user-activation/user-activation.component';
 
-const appRoutes: Routes = [
-  { path: "", pathMatch: "full", redirectTo: "user/signup" },
-  { path: "user/signup", component: SignupComponent },
-  { path: "user/signin", component: SigninComponent },
-  { path: "user/register", pathMatch: "full", redirectTo: "/signup" },
-  { path: "user/login", pathMatch: "full", redirectTo: "/signin" },
-  { path: "forgot-password", component: ForgotPasswordComponent },
-  { path: "reset-password", component: ResetPasswordComponent },
-  {
-    path: "forgot-password-email-notifing",
-    component: ForgotPasswordEmailNotifingComponent
-  },
-  {
-    path: "user-activation-email-notifing",
-    component: UserActivationEmailNotifingComponent
-  },
-  { path: "navbar", component: NavbarComponent },
-  { path: "contacts", component: ContactsListComponent },
-  { path: "newcontact", component: AddContactComponent },
-  { path: "404", component: NotFoundComponent },
-  { path: "**", redirectTo: "/404" }
-];
+// const appRoutes: Routes = [
+//   { path: "", pathMatch: "full", redirectTo: "user/signup" },
+//   { path: "user/signup", component: SignupComponent },
+//   { path: "user/signin", component: SigninComponent },
+//   { path: "user/register", pathMatch: "full", redirectTo: "/signup" },
+//   { path: "user/login", pathMatch: "full", redirectTo: "/signin" },
+//   { path: "forgot-password", component: ForgotPasswordComponent },
+//   { path: "reset-password", component: ResetPasswordComponent },
+//   {
+//     path: "forgot-password-email-notifing",
+//     component: ForgotPasswordEmailNotifingComponent
+//   },
+//   {
+//     path: "user-activation-email-notifing",
+//     component: UserActivationEmailNotifingComponent
+//   },
+//   { path: "navbar", component: NavbarComponent },
+//   { path: "contacts", component: ContactsListComponent },
+//   { path: "newcontact", component: AddContactComponent },
+//   { path: "404", component: NotFoundComponent },
+//   { path: "**", redirectTo: "/404" }
+// ];
 
 @NgModule({
   declarations: [
@@ -62,14 +64,16 @@ const appRoutes: Routes = [
     EditComponent,
     MoreComponent,
     AddContactComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    UserActivationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    // RouterModule.forRoot(appRoutes),
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [ColorService],
   bootstrap: [AppComponent]
