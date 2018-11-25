@@ -23,10 +23,12 @@ html {
   color:red;
   background: rgba(255,0,0,0.1);
   border-left:4px solid red;
+  margin:.5rem auto;
 }
 .success{
   color:green;
   background: rgba(0,255,0,0.1);
   padding:1rem;
   border-left:4px solid green;
+  margin:.5rem auto;
 }
