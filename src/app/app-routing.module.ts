@@ -21,7 +21,7 @@ const appRoutes: Routes = [
   { path: "user/login", pathMatch: "full", redirectTo: "/signin" },
   { path: "user/activate/:token", component: UserActivationComponent },
   { path: "forgot-password", component: ForgotPasswordComponent },
-  { path: "reset-password", component: ResetPasswordComponent },
+  { path: "reset-password/:token", component: ResetPasswordComponent },
   {
     path: "forgot-password-email-notifing",
     component: ForgotPasswordEmailNotifingComponent
