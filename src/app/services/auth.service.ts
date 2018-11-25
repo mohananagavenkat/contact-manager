@@ -34,4 +34,23 @@ export class AuthService {
     return this.http.get<any>(`${appConfig.apiDomain}/user/activate/${token}`);
   }
 
+  forgotPassword(data): Observable<any> {
+    return this.http.post<any>(
+      `${appConfig.apiDomain}/user/forgotpassword`,
+      data
+    );
+  }
+
+  resendForgotPasswordToken(tokenId): Observable<any> {
+    return this.http.get<any>(`${appConfig.apiDomain}/user/resend/forgotpasswordtoken/${tokenId}`)
+  }
+
+  checkForgotPasswordToken(data): Observable<any> {
+    return this.http.post<any>(`${appConfig.apiDomain}/user/forgotpassword/validatetoken`, data);
+  }
+
+  resetPassword(data): Observable<any> {
+    return this.http.post<any>(`${appConfig.apiDomain}/user/resetpassword`, data);
+  }
+
 }
