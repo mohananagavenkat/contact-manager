@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-signin",
@@ -14,7 +15,8 @@ export class SigninComponent implements OnInit {
   showUserActivationEmailNotification: boolean = false;
   resendActivation: boolean = false;
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -41,6 +43,11 @@ export class SigninComponent implements OnInit {
           else if (response.data && response.data.tokenId) {
             this.resendActivation = true;
             this.tokenId = response.data.tokenId;
+          }
+          else if (response.status == true && response.user) {
+            console.log("authentication sucess");
+            this.authService.setActiveUser(response.user);
+            this.router.navigate(['/', 'contacts']);
           }
         }
       )
