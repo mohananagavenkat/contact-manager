@@ -24,6 +24,9 @@ import { AddContactComponent } from "./components/contacts-list/add-contact/add-
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { UserActivationComponent } from './components/user-activation/user-activation.component';
 
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AuthInterceptor } from "./interceptors/auth.interceptor"
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +54,10 @@ import { UserActivationComponent } from './components/user-activation/user-activ
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [ColorService],
+  providers: [
+    ColorService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
