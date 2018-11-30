@@ -24,29 +24,6 @@ import { AddContactComponent } from "./components/contacts-list/add-contact/add-
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { UserActivationComponent } from './components/user-activation/user-activation.component';
 
-// const appRoutes: Routes = [
-//   { path: "", pathMatch: "full", redirectTo: "user/signup" },
-//   { path: "user/signup", component: SignupComponent },
-//   { path: "user/signin", component: SigninComponent },
-//   { path: "user/register", pathMatch: "full", redirectTo: "/signup" },
-//   { path: "user/login", pathMatch: "full", redirectTo: "/signin" },
-//   { path: "forgot-password", component: ForgotPasswordComponent },
-//   { path: "reset-password", component: ResetPasswordComponent },
-//   {
-//     path: "forgot-password-email-notifing",
-//     component: ForgotPasswordEmailNotifingComponent
-//   },
-//   {
-//     path: "user-activation-email-notifing",
-//     component: UserActivationEmailNotifingComponent
-//   },
-//   { path: "navbar", component: NavbarComponent },
-//   { path: "contacts", component: ContactsListComponent },
-//   { path: "newcontact", component: AddContactComponent },
-//   { path: "404", component: NotFoundComponent },
-//   { path: "**", redirectTo: "/404" }
-// ];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +48,6 @@ import { UserActivationComponent } from './components/user-activation/user-activ
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    // RouterModule.forRoot(appRoutes),
     HttpClientModule,
     AppRoutingModule
   ],
