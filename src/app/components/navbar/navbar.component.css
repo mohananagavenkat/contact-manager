@@ -80,7 +80,7 @@ button[class*="material-icons"]:focus:active {
 .mysidenav-container.visible {
   opacity: 1;
   pointer-events: auto;
-  /* transition-delay: .2s; */
+  z-index: 999;
 }
 
 .mysidenav-header {
