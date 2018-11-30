@@ -8,6 +8,8 @@ import { appConfig } from "../config";
 })
 export class AuthService {
 
+  private activeUser: any;
+
   constructor(
     private http: HttpClient
   ) { }
@@ -51,6 +53,19 @@ export class AuthService {
 
   resetPassword(data): Observable<any> {
     return this.http.post<any>(`${appConfig.apiDomain}/user/resetpassword`, data);
+  }
+
+  getToken() {
+    return (this.activeUser && this.activeUser.token) ? this.activeUser.token : undefined;
+  }
+
+  setActiveUser(userData) {
+    this.activeUser = userData;
+    window.localStorage.setItem("activeUser", JSON.stringify(userData));
+  }
+
+  getActiveUser() {
+    return this.activeUser;
   }
 
 }
