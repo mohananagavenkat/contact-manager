@@ -12,7 +12,14 @@ export class AuthService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    console.log("auth service instance created");
+    const userData = JSON.parse(window.localStorage.getItem("activeUser"));
+    if (userData) {
+      this.activateUser = userData;
+    }
+    console.table(this.activateUser);
+  }
 
   signup(data): Observable<any> {
     return this.http.post(

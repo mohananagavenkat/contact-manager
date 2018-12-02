@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
+import { ContactService } from "../../../services/contact.service";
 
 @Component({
   selector: "app-add-contact",
@@ -10,14 +11,26 @@ import { Router } from "@angular/router";
 export class AddContactComponent implements OnInit {
   @ViewChild("addContactForm") addContactForm: NgForm;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private contactService: ContactService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addContact() {
     console.log(this.addContactForm);
     console.log(this.addContactForm.value);
-    this.addContactForm.resetForm();
-    this.router.navigate(["/", "contacts"]);
+    this
+      .contactService
+      .addContact(this.addContactForm.value)
+      .subscribe(response => {
+        console.log("response received");
+        console.log(response);
+        if (response.auth === false) {
+          this.router.navigate(["/", "user", "signin"]);
+        }
+        this.addContactForm.resetForm();
+      })
   }
 }

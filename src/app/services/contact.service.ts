@@ -8,9 +8,12 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class ContactService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   getContacts(): Observable<Contact[]> {
     console.log("getting contacts");
     return this.http.get<Contact[]>(`${appConfig.apiDomain}/contacts`);
+  }
+  addContact(data): Observable<any> {
+    return this.http.post<any>(`${appConfig.apiDomain}/contacts`, data);
   }
 }
