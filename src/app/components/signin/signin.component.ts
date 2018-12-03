@@ -20,6 +20,10 @@ export class SigninComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log("signin component", this.authService.getAuthStatus());
+    if (this.authService.getAuthStatus()) {
+      this.router.navigate(["/contacts"]);
+    }
     this.signinForm = new FormGroup({
       email: new FormControl(null, {
         validators: [Validators.required, Validators.email]
@@ -46,6 +50,7 @@ export class SigninComponent implements OnInit {
           }
           else if (response.status == true && response.user) {
             console.log("authentication sucess");
+            this.authService.isAuthenticated = true;
             this.authService.setActiveUser(response.user);
             this.router.navigate(['/', 'contacts']);
           }

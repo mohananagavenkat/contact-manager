@@ -17,12 +17,12 @@ import {
 export class StarComponent implements OnInit, OnChanges {
   @Input("contactId") contactId;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnChanges() {
-    console.log(this.contactId);
+    // console.log(this.contactId);
   }
 
   onBookmark() {

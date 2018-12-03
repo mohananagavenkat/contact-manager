@@ -9,7 +9,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private authService: AuthService
   ) {
-    console.log(this.authService);
+    // console.log(this.authService);
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
