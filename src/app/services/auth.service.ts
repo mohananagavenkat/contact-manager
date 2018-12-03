@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { appConfig } from "../config";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,16 +10,18 @@ import { appConfig } from "../config";
 export class AuthService {
 
   private activeUser: any;
+  isAuthenticated: boolean = false;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {
     console.log("auth service instance created");
-    const userData = JSON.parse(window.localStorage.getItem("activeUser"));
+    const userData = JSON.parse(localStorage.getItem("activeUser"));
     if (userData) {
-      this.activateUser = userData;
+      this.activeUser = userData;
     }
-    console.table(this.activateUser);
+    console.table(this.activeUser);
   }
 
   signup(data): Observable<any> {
@@ -68,11 +71,35 @@ export class AuthService {
 
   setActiveUser(userData) {
     this.activeUser = userData;
-    window.localStorage.setItem("activeUser", JSON.stringify(userData));
+    localStorage.setItem("activeUser", JSON.stringify(userData));
   }
 
   getActiveUser() {
     return this.activeUser;
+  }
+
+  clearActiveUser() {
+    localStorage.removeItem("activeUser");
+    this.activateUser = null;
+    this.isAuthenticated = false;
+  }
+
+  getAuthStatus() {
+    return this.isAuthenticated;
+  }
+
+  autoLogin() {
+    console.log("auth service executed");
+    if (!this.activeUser || !this.activeUser.token) {
+      console.log("if block executed");
+      return;
+    }
+    this.isAuthenticated = true;
+  }
+
+  logout() {
+    this.clearActiveUser();
+    this.router.navigate(['/', 'user', 'login']);
   }
 
 }
