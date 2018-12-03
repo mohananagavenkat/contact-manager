@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="contacts-wrapper">
+<div *ngIf="contacts" class="contacts-wrapper">
   <div class="contacts-header">
     <div>Name</div>
     <div *ngIf="canDisplay.email">Email</div>
@@ -9,11 +9,10 @@
   </div>
   <div class="contacts">
     <ng-container *ngFor="let eachContact of contacts; let i = index">
-      <app-contact
-        [i]="i"
-        [contact]="eachContact"
-        [canDisplay]="canDisplay"
-      ></app-contact>
+      <app-contact [i]="i" [contact]="eachContact" [canDisplay]="canDisplay"></app-contact>
     </ng-container>
   </div>
+</div>
+<div *ngIf="!contacts" class="ceter-align">
+  No contacts saved yet.
 </div>

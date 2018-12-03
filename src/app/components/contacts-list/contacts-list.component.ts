@@ -7,6 +7,7 @@ import {
 import { Contact } from "../../interfaces/contact";
 import { contactsData } from "../../data/contacts.data";
 import { ContactService } from "../../services/contact.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-contacts-list",
@@ -17,11 +18,15 @@ import { ContactService } from "../../services/contact.service";
 export class ContactsListComponent implements OnInit {
   contacts: Contact[];
   canDisplay;
-  constructor(private contactService: ContactService) {}
+  constructor(
+    private contactService: ContactService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     //this.contacts = contactsData;
-    this.getContacts();
+    console.log("contact-list ngoninit");
+    this.contacts = this.contactService.getContacts();
     this.updateDisplayStatus(window.screen.availWidth);
   }
 
@@ -32,7 +37,7 @@ export class ContactsListComponent implements OnInit {
 
   @HostListener("document:click", ["$event"])
   closePreviousMore(event) {
-    console.log(event);
+    // console.log(event);
     const ele = document.querySelector(".more-options.show");
     if (ele) {
       ele.classList.remove("show");
@@ -40,20 +45,11 @@ export class ContactsListComponent implements OnInit {
   }
 
   getContacts() {
-    this.contactService.getContacts().subscribe(
-      contacts => {
-        console.log("contacts fetched successfully");
-        this.contacts = contacts;
-        console.log(contacts);
-      },
-      error => {
-        console.error(error);
-      }
-    );
+
   }
 
   updateDisplayStatus(width) {
-    console.log(width);
+    // console.log(width);
     this.canDisplay = {
       name: true,
       email: true,
@@ -76,6 +72,6 @@ export class ContactsListComponent implements OnInit {
       this.canDisplay.phoneNumber = false;
       this.canDisplay.actions = false;
     }
-    console.log(this.canDisplay);
+    // console.log(this.canDisplay);
   }
 }
