@@ -5,6 +5,7 @@ import {
   ViewChild,
   ElementRef
 } from "@angular/core";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: "app-navbar",
@@ -50,9 +51,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     }
   ];
 
-  constructor() {}
+  constructor(
+    private authService: AuthService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit() {
     const mynav = document.querySelector(".mynav");
@@ -81,6 +84,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     if (event.target === event.currentTarget) {
       this.hideSidenav();
     }
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }
 
