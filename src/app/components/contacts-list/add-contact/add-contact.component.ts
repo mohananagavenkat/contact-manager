@@ -21,15 +21,17 @@ export class AddContactComponent implements OnInit {
   addContact() {
     console.log(this.addContactForm);
     console.log(this.addContactForm.value);
+    const newContcat = this.addContactForm.value;
     this
       .contactService
-      .addContact(this.addContactForm.value)
+      .addContact(newContcat)
       .subscribe(response => {
         console.log("response received");
         console.log(response);
         if (response.auth === false) {
           this.router.navigate(["/", "user", "signin"]);
         }
+        this.contactService.pushContact(response.contact);
         this.addContactForm.resetForm();
       })
   }
