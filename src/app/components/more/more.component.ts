@@ -5,6 +5,7 @@ import {
   HostListener,
   ViewEncapsulation
 } from "@angular/core";
+import { ContactService } from "../../services/contact.service";
 @Component({
   selector: "app-more",
   templateUrl: "./more.component.html",
@@ -17,7 +18,9 @@ export class MoreComponent implements OnInit {
 
   moreOptionsDropdown: HTMLElement;
 
-  constructor() {}
+  constructor(
+    private contactService: ContactService
+  ) { }
 
   ngOnInit() {
     this.moreOptionsDropdown = document.createElement("UL");
@@ -25,8 +28,19 @@ export class MoreComponent implements OnInit {
     this.moreOptionsDropdown.classList.add("more-options");
     this.moreOptionsDropdown.addEventListener("click", event => {
       const ele = <HTMLElement>event.target;
-      if (ele.className == "option1") {
-        console.log("option1 clicked for " + this.id);
+      if (ele.className == "delete-contact") {
+        const contactId = ele.dataset.contactId;
+        console.log("deleting contact" + contactId);
+        this
+          .contactService
+          .deleteContact(contactId)
+          .subscribe(response => {
+            if (response.status == false) {
+              alert(response.error);
+            }
+            this.contactService.popContact(contactId);
+            alert(`contact deleted successfully`);
+          })
       } else if (ele.className == "option2") {
         console.log("option2 clicked for " + this.id);
       } else if (ele.className == "option3") {
@@ -63,7 +77,7 @@ export class MoreComponent implements OnInit {
 
   updateMoreOptionsHtml(contactId) {
     this.moreOptionsDropdown.innerHTML = `
-      <li><a data-contact-id="${this.id}" class="option1" > Option1 </a></li >
+      <li><a data-contact-id="${this.id}" class="delete-contact" > Delete </a></li >
       <li><a data-contact-id="${this.id}" class="option2" > Option2 </a></li >
       <li><a data-contact-id="${this.id}" class="option3" > Option3 </a></li >
     `;

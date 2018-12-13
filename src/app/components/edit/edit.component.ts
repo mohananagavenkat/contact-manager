@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
+import { ContactService } from "../../services/contact.service";
 
 @Component({
   selector: "app-edit",
@@ -8,13 +9,16 @@ import { Component, OnInit, Input } from "@angular/core";
 export class EditComponent implements OnInit {
   @Input("contactId") contactId;
 
-  constructor() {}
+  constructor(
+    private contactService: ContactService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  ngOnChanges() {}
+  ngOnChanges() { }
 
   onEdit() {
     console.log(`edit contact ${this.contactId}`);
+    this.contactService.editContact(this.contactId);
   }
 }

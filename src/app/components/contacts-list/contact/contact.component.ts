@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from "@angular/core";
+import { Component, OnInit, Input, OnChanges, ViewChild } from "@angular/core";
 import { Contact } from "../../../interfaces/contact";
 import { ColorService } from "../../../services/color.service";
 
@@ -19,9 +19,11 @@ export class ContactComponent implements OnInit, OnChanges {
 
   background: string;
 
-  constructor(private colorService: ColorService) {}
+  constructor(
+    private colorService: ColorService,
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnChanges() {
     //console.log(this.contact.avatar);

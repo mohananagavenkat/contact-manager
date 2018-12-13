@@ -3,21 +3,15 @@
     <div *ngIf="contact.avatar" class="contact-image">
       <img src="/assets/img/profilepic.jpg" alt="" />
     </div>
-    <div
-      [style.backgroundColor]="background"
-      *ngIf="!contact.avatar"
-      class="contact-letter"
-    >
+    <div [style.backgroundColor]="background" *ngIf="!contact.avatar" class="contact-letter">
       {{ contact.firstName.charAt(0) }}
     </div>
-    <span tabindex="0" role="button">{{
-      contact.firstName + " " + (contact.lastName ? contact.lastName : "")
-    }}</span>
+    <span tabindex="0" role="button">{{ contact.firstName + " " + (contact.lastName ? contact.lastName : "") }}
+    </span>
   </div>
   <div *ngIf="canDisplay.email" class="email">
-    <span tabindex="0" role="button">{{
-      contact.email ? contact.email : ""
-    }}</span>
+    <span tabindex="0" role="button">{{ contact.email ? contact.email : "" }}
+    </span>
   </div>
   <div *ngIf="canDisplay.phoneNumber" class="mobile">
     <span tabindex="0" role="button">
@@ -25,15 +19,12 @@
     </span>
   </div>
   <div *ngIf="canDisplay.job" class="job">
-    <span>{{
-      (contact.job ? contact.job : "") +
-        " " +
-        (contact.company ? contact.company : "")
-    }}</span>
+    <span>{{ (contact.job ? contact.job : "") + " " + (contact.company ? contact.company : "") }}
+    </span>
   </div>
   <div *ngIf="canDisplay.actions" class="actions">
-    <app-star [contactId]="i"></app-star>
-    <app-edit [contactId]="i"></app-edit>
-    <app-more [contactId]="i"></app-more>
+    <app-star [contactId]="contact._id"></app-star>
+    <app-edit (editContact)="editContact($event)" [contactId]="contact._id"></app-edit>
+    <app-more [contactId]="contact._id"></app-more>
   </div>
 </div>

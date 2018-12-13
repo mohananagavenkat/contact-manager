@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div *ngIf="contacts" class="contacts-wrapper">
+<div *ngIf="contacts && contacts.length != 0" class="contacts-wrapper">
   <div class="contacts-header">
     <div>Name</div>
     <div *ngIf="canDisplay.email">Email</div>
@@ -13,6 +13,7 @@
     </ng-container>
   </div>
 </div>
-<div *ngIf="!contacts" class="ceter-align">
-  No contacts saved yet.
+<div *ngIf="!contacts || contacts.length == 0" class="center-align">
+  {{ fetchStatus }}
 </div>
+<app-edit-contact #editContactModalRef></app-edit-contact>

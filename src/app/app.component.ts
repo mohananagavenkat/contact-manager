@@ -15,8 +15,5 @@ export class AppComponent implements OnInit {
   ) { }
   ngOnInit() {
     this.authService.autoLogin();
-    if (this.authService.isAuthenticated) {
-      this.contactService.getContacts();
-    }
   }
 }

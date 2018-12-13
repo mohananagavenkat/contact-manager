@@ -21,9 +21,10 @@ export class SigninComponent implements OnInit {
 
   ngOnInit() {
     console.log("signin component", this.authService.getAuthStatus());
-    if (this.authService.getAuthStatus()) {
-      this.router.navigate(["/contacts"]);
-    }
+    // if (this.authService.getAuthStatus()) {
+    //   console.log("user authenticated. redirecting from signin page to contcats page");
+    //   this.router.navigate(["/contacts"]);
+    // }
     this.signinForm = new FormGroup({
       email: new FormControl(null, {
         validators: [Validators.required, Validators.email]

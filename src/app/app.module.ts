@@ -27,6 +27,10 @@ import { UserActivationComponent } from './components/user-activation/user-activ
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthInterceptor } from "./interceptors/auth.interceptor"
 
+import { AuthGuard } from "./guards/auth.guard";
+import { AlreadyAuthenticatedGaurd } from "./guards/alreadyAuthenticated";
+import { EditContactComponent } from './components/contacts-list/edit-contact/edit-contact.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +49,8 @@ import { AuthInterceptor } from "./interceptors/auth.interceptor"
     MoreComponent,
     AddContactComponent,
     CapitalizePipe,
-    UserActivationComponent
+    UserActivationComponent,
+    EditContactComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,9 @@ import { AuthInterceptor } from "./interceptors/auth.interceptor"
   ],
   providers: [
     ColorService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    AuthGuard,
+    AlreadyAuthenticatedGaurd
   ],
   bootstrap: [AppComponent]
 })

@@ -82,6 +82,7 @@ button[class*="material-icons"]:focus:active {
   transform: translatex(-102%);
   box-shadow: 5px 0px 10px 0px rgba(0, 0, 255, 0.1);
   transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+  overflow-y: auto;
 }
 
 .mysidenav.visible {

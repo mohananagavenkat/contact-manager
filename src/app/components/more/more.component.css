@@ -36,6 +36,7 @@ button {
   text-decoration: none;
   color: gray;
   font-size: 1rem;
+  cursor: pointer;
 }
 .more-options li a:hover {
   background: rgba(0, 0, 0, 0.05);

@@ -13,14 +13,18 @@ import { ContactsListComponent } from "./components/contacts-list/contacts-list.
 import { AddContactComponent } from "./components/contacts-list/add-contact/add-contact.component";
 import { UserActivationComponent } from './components/user-activation/user-activation.component';
 
+import { AuthGuard } from "./guards/auth.guard";
+import { AlreadyAuthenticatedGaurd } from "./guards/alreadyAuthenticated";
+import { EditContactComponent } from './components/contacts-list/edit-contact/edit-contact.component';
+
 const appRoutes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "user/signup" },
-  { path: "user/signup", component: SignupComponent },
-  { path: "user/signin", component: SigninComponent },
+  { path: "user/signup", component: SignupComponent, canActivate: [AlreadyAuthenticatedGaurd] },
+  { path: "user/signin", component: SigninComponent, canActivate: [AlreadyAuthenticatedGaurd] },
   { path: "user/register", pathMatch: "full", redirectTo: "user/signup" },
   { path: "user/login", pathMatch: "full", redirectTo: "user/signin" },
   { path: "user/activate/:token", component: UserActivationComponent },
-  { path: "forgot-password", component: ForgotPasswordComponent },
+  { path: "forgot-password", component: ForgotPasswordComponent, canActivate: [AlreadyAuthenticatedGaurd] },
   { path: "reset-password/:token", component: ResetPasswordComponent },
   {
     path: "forgot-password-email-notifing",
@@ -31,8 +35,9 @@ const appRoutes: Routes = [
     component: UserActivationEmailNotifingComponent
   },
   { path: "navbar", component: NavbarComponent },
-  { path: "contacts", component: ContactsListComponent },
-  { path: "newcontact", component: AddContactComponent },
+  { path: "contacts", component: ContactsListComponent, canActivate: [AuthGuard] },
+  { path: "newcontact", component: AddContactComponent, canActivate: [AuthGuard] },
+  { path: "modal", component: EditContactComponent, canActivate: [AuthGuard] },
   { path: "404", component: NotFoundComponent },
   { path: "**", redirectTo: "/404" }
 ];

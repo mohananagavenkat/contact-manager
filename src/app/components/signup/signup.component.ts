@@ -21,7 +21,8 @@ export class SignupComponent implements OnInit, AfterViewInit {
     private router: Router
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   ngAfterViewInit() {
     M.updateTextFields();

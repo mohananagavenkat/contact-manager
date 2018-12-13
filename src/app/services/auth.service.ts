@@ -21,7 +21,7 @@ export class AuthService {
     if (userData) {
       this.activeUser = userData;
     }
-    console.table(this.activeUser);
+    console.log(this.activeUser);
   }
 
   signup(data): Observable<any> {
@@ -89,7 +89,7 @@ export class AuthService {
   }
 
   autoLogin() {
-    console.log("auth service executed");
+    console.log("auto logging user");
     if (!this.activeUser || !this.activeUser.token) {
       console.log("if block executed");
       return;
