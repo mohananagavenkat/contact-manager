@@ -1,0 +1,27 @@
+<div #viewContactModel id="modal1" class="modal">
+  <div *ngIf="contact" class="modal-content">
+    <div class="contact-header pt-0">
+      <div class="photo"></div>
+      <div class="name">
+        <h5>{{ contact.firstName + ' ' + contact.lastName }}</h5>
+      </div>
+      <div class="actions"></div>
+      <h4 class="modal-close">&times;</h4>
+    </div>
+    <div class="contact-details">
+      <h5>Contact Details</h5>
+      <div *ngIf="contact.company" class="company">
+        <i class="material-icons">business</i>
+        <span class="text">{{ contact.job + ' at ' + contact.company }}</span>
+      </div>
+      <div *ngIf="contact.email" class="email">
+        <i class="material-icons">email</i>
+        <span class="text">{{ contact.email }}</span>
+      </div>
+      <div class="number">
+        <i class="material-icons">call</i>
+        <span class="text">{{ contact.phoneNumber }}</span>
+      </div>
+    </div>
+  </div>
+</div>
