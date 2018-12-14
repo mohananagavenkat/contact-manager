@@ -1,7 +1,4 @@
-.form-wrapper {
-  min-height: 100vh;
-}
-
+/* authform.css file */
 .form-wrapper form {
   width: 90%;
   max-width: 500px;

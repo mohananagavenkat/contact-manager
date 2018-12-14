@@ -40,14 +40,14 @@
           Confirmpassword should be same</span>
       </div>
     </div>
-    <div class="row">
+    <div class="row mt-3">
       <div class="col s12">
         <button [disabled]="signupForm.invalid || ( confirmPassword.value != password.value )" class="btn w-100" type="submit">
           Submit <i class="material-icons right">send</i>
         </button>
       </div>
     </div>
-    <div class="row">
+    <div class="row mt-2">
       <div class="col s12 center-align">
         Have an account? <a [routerLink]="['/', 'user', 'signin']" href="#">Signin</a>
       </div>

@@ -206,3 +206,9 @@ ul.mynav li a:active {
 .material-icons {
   font-family: "Material Icons" !important;
 }
+
+@media screen and (max-width:450px){
+  .brand-name{
+    font-size: 1rem;
+  }
+}
