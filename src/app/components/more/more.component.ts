@@ -29,20 +29,9 @@ export class MoreComponent implements OnInit {
     this.moreOptionsDropdown.addEventListener("click", event => {
       const ele = <HTMLElement>event.target;
       if (ele.className == "delete-contact") {
-        const contactId = ele.dataset.contactId;
-        console.log("deleting contact" + contactId);
-        this
-          .contactService
-          .deleteContact(contactId)
-          .subscribe(response => {
-            if (response.status == false) {
-              alert(response.error);
-            }
-            this.contactService.popContact(contactId);
-            alert(`contact deleted successfully`);
-          })
-      } else if (ele.className == "option2") {
-        console.log("option2 clicked for " + this.id);
+        this.deleteContact(ele.dataset.contactId);
+      } else if (ele.className == "print-contact") {
+        this.printContact(ele.dataset.contactId)
       } else if (ele.className == "option3") {
         console.log("option3 clicked for " + this.id);
       }
@@ -78,8 +67,31 @@ export class MoreComponent implements OnInit {
   updateMoreOptionsHtml(contactId) {
     this.moreOptionsDropdown.innerHTML = `
       <li><a data-contact-id="${this.id}" class="delete-contact" > Delete </a></li >
-      <li><a data-contact-id="${this.id}" class="option2" > Option2 </a></li >
+      <li><a data-contact-id="${this.id}" class="print-contact" > Print </a></li >
       <li><a data-contact-id="${this.id}" class="option3" > Option3 </a></li >
     `;
+  }
+
+  deleteContact(contactId) {
+    console.log("deleting contact" + contactId);
+    this
+      .contactService
+      .deleteContact(contactId)
+      .subscribe(response => {
+        if (response.status == false) {
+          alert(response.error);
+        }
+        this.contactService.popContact(contactId);
+        alert(`contact deleted successfully`);
+      })
+  }
+  printContact(contactId) {
+    const contact = this.contactService.getContactById(contactId);
+    console.log("printing contact");
+    console.log(contact);
+    const printWindow = window.open("contact Manager");
+    printWindow.document.write(JSON.stringify(contact));
+    printWindow.print();
+    printWindow.close();
   }
 }

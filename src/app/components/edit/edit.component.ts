@@ -17,8 +17,9 @@ export class EditComponent implements OnInit {
 
   ngOnChanges() { }
 
-  onEdit() {
+  onEdit(event) {
     console.log(`edit contact ${this.contactId}`);
     this.contactService.editContact(this.contactId);
+    event.stopPropagation();
   }
 }

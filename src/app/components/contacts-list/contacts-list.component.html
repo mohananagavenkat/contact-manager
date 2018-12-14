@@ -9,7 +9,7 @@
   </div>
   <div class="contacts">
     <ng-container *ngFor="let eachContact of contacts; let i = index">
-      <app-contact [i]="i" [contact]="eachContact" [canDisplay]="canDisplay"></app-contact>
+      <app-contact (click)="viewContact(eachContact)" [i]="i" [contact]="eachContact" [canDisplay]="canDisplay"></app-contact>
     </ng-container>
   </div>
 </div>
@@ -17,3 +17,4 @@
   {{ fetchStatus }}
 </div>
 <app-edit-contact #editContactModalRef></app-edit-contact>
+<app-view-contact #viewContactModalRef></app-view-contact>

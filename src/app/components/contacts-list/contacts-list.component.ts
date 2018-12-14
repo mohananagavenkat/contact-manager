@@ -12,6 +12,7 @@ import { Router } from "@angular/router";
 import { AuthService } from "../../services/auth.service";
 import { Subscription } from "rxjs";
 import { EditContactComponent } from "./edit-contact/edit-contact.component";
+import { ViewContactComponent } from "./view-contact/view-contact.component";
 
 @Component({
   selector: "app-contacts-list",
@@ -27,6 +28,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
   fetchStatus: string = "Fetching Contacts...";
   editingContact: any;
   @ViewChild('editContactModalRef') editContactModal: EditContactComponent;
+  @ViewChild('viewContactModalRef') viewContactModal: ViewContactComponent;
   constructor(
     private contactService: ContactService,
     private router: Router,
@@ -96,6 +98,10 @@ export class ContactsListComponent implements OnInit, OnDestroy {
     this.editingContact = this.contactService.getContactById(contactId);
     console.log(this.editingContact);
     this.editContactModal.openModal();
+  }
+
+  viewContact(contact) {
+    this.viewContactModal.openModal(contact);
   }
 
   updateDisplayStatus(width) {

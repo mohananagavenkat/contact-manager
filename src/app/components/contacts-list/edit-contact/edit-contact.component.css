@@ -1,0 +1,11 @@
+.modal-close{
+  border:none;
+  background: none;
+  font-size: 2rem;
+    position: absolute;
+    right: 25px;
+    top: 20px;
+}
+.modal-close:focus{
+  background: #e4e4e4;
+}
