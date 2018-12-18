@@ -14,9 +14,9 @@ export class AlreadyAuthenticatedGaurd implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
         console.log("Already authemticated gaurd");
         if (this.authService.getAuthStatus()) { // checks whether user already loggedin
-            if (history.length > 1) { // If there exist any history
-                history.back(); // redirects to previous URL
-            }
+            // if (history.length > 1) { // If there exist any history
+            //     history.back(); // redirects to previous URL
+            // }
             this.router.navigate(['/', 'contacts']);
             return false;
         }
