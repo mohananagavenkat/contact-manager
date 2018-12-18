@@ -57,4 +57,27 @@ export class ContactService {
   getEditContactObservable() {
     return this.editContactObservable.asObservable();
   }
+
+  getPrintableContact(contactId?) {
+    if (contactId) {
+      let contacts = [this.getContactById(contactId)];
+      return this.generatePrintHtml(contacts);
+    }
+    return this.generatePrintHtml(this.contacts);
+  }
+  generatePrintHtml(contacts) {
+    let html = `
+    `;
+    contacts.forEach(contact => {
+      html += `
+        <h2>${contact.firstName} ${contact.lastName}</h2>
+        ${contact.email ? `<p>Email:${contact.email}<p>` : ""}
+        ${contact.job ? `<p>Job:${contact.job}<p>` : ""}
+        ${contact.company ? `<p>Company:${contact.company}<p>` : ""}
+        ${contact.phoneNumber ? `<p>PhoneNumber:${contact.phoneNumber}<p>` : ""}
+        <hr />
+      `
+    });
+    return html;
+  }
 }
