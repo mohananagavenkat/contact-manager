@@ -86,11 +86,8 @@ export class MoreComponent implements OnInit {
       })
   }
   printContact(contactId) {
-    const contact = this.contactService.getContactById(contactId);
-    console.log("printing contact");
-    console.log(contact);
     const printWindow = window.open("contact Manager");
-    printWindow.document.write(JSON.stringify(contact));
+    printWindow.document.write(this.contactService.getPrintableContact(contactId));
     printWindow.print();
     printWindow.close();
   }
