@@ -6,6 +6,7 @@ import {
   ElementRef
 } from "@angular/core";
 import { AuthService } from "../../services/auth.service";
+import { ContactService } from "../../services/contact.service";
 
 @Component({
   selector: "app-navbar",
@@ -52,7 +53,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   ];
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private contactService: ContactService
   ) { }
 
   ngOnInit() { }
@@ -88,6 +90,13 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   logout() {
     this.authService.logout();
+  }
+  // printing all contacts
+  printAllContacts(e) {
+    const printWindow = window.open("contact Manager");
+    printWindow.document.write(this.contactService.getPrintableContact());
+    printWindow.print();
+    printWindow.close();
   }
 }
 

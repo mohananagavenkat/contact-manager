@@ -28,7 +28,9 @@
     </div>
     <ul class="mynav">
       <li *ngFor="let navlink of navlinks">
-        <a [routerLink]="navlink.link" href="#">
+        <a *ngIf="navlink.name !== 'print' " [routerLink]="navlink.link" href="#">
+          <i class="material-icons">{{ navlink.icon }}</i> {{ navlink.name }}</a>
+        <a *ngIf="navlink.name == 'print' " (click)="printAllContacts($event)" href="javascript:void(0)">
           <i class="material-icons">{{ navlink.icon }}</i> {{ navlink.name }}</a>
       </li>
       <!--
