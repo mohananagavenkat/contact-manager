@@ -19,7 +19,7 @@ export class EditComponent implements OnInit {
 
   onEdit(event) {
     console.log(`edit contact ${this.contactId}`);
-    this.contactService.editContact(this.contactId);
+    this.contactService.editContactEmitter(this.contactId);
     event.stopPropagation();
   }
 }

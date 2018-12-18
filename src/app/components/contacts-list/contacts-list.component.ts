@@ -97,7 +97,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
   editContact(contactId) {
     this.editingContact = this.contactService.getContactById(contactId);
     console.log(this.editingContact);
-    this.editContactModal.openModal();
+    this.editContactModal.openModal(this.editingContact);
   }
 
   viewContact(contact) {

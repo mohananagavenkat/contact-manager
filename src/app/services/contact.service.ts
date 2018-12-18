@@ -27,6 +27,9 @@ export class ContactService {
   deleteContact(contactId) {
     return this.http.delete<any>(`${appConfig.apiDomain}/contacts/${contactId}`);
   }
+  updateContact(contactId, updatedContact) {
+    return this.http.put<any>(`${appConfig.apiDomain}/contacts/${contactId}`, updatedContact);
+  }
   /******************* Methods dealing with local data *************************/
   // intialize the local contacts
   setContacts(contacts) {
@@ -46,8 +49,13 @@ export class ContactService {
   getContactById(contactId) {
     return this.contacts.find(contact => contact._id == contactId);
   }
-  editContact(contactId) {
+  editContactEmitter(contactId) {
     this.editContactObservable.next(contactId);
+  }
+  updateContactLocal(updatedContact) {
+    const index = this.contacts.findIndex(contact => contact._id = updatedContact._id);
+    this.contacts[index] = updatedContact;
+    this.contactsUpdateObservable.next(true);
   }
 
   // observables which emits some data to make components aware of changes
