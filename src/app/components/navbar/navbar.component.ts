@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       icon: "print"
     },
     {
-      name: "download",
+      name: "download (CSV)",
       link: ["/", "download"],
       icon: "cloud_download"
     }
@@ -97,6 +97,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     printWindow.document.write(this.contactService.getPrintableContact());
     printWindow.print();
     printWindow.close();
+  }
+  // downloading contacts as csv
+  downloadContacts() {
+    this.contactService.downloadCSV();
   }
 }
 

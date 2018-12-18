@@ -184,6 +184,7 @@ ul.mynav li a {
   letter-spacing: 1px;
   font-weight: bold;
   font-family: Lato;
+  text-transform: capitalize;
 }
 
 ul.mynav li a i {

@@ -88,4 +88,19 @@ export class ContactService {
     });
     return html;
   }
+  downloadCSV() {
+    var csv = 'firstName,lastName,email,job,company,phoneNumber,notes\n';
+    this.contacts.forEach((contact) => {
+      csv += `${contact.firstName ? `${contact.firstName}` : ""},${contact.lastName ? `${contact.lastName}` : ""},${contact.email ? `${contact.email}` : ""},${contact.job ? `${contact.job}` : ""},${contact.company ? `${contact.company}` : ""},${contact.phoneNumber ? `${contact.phoneNumber}` : ""},${contact.notes ? `${contact.notes}` : ""},`;
+      csv += "\n";
+    });
+    console.log(csv);
+    const link = document.createElement('a');
+    link.style.display = "none";
+    link.setAttribute("download", "contacts.csv")
+    link.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+    link.target = '_blank';
+    document.body.appendChild(link)
+    link.click();
+  }
 }
