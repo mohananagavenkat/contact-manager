@@ -31,6 +31,7 @@ import { AuthGuard } from "./guards/auth.guard";
 import { AlreadyAuthenticatedGaurd } from "./guards/alreadyAuthenticated";
 import { EditContactComponent } from './components/contacts-list/edit-contact/edit-contact.component';
 import { ViewContactComponent } from './components/contacts-list/view-contact/view-contact.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ViewContactComponent } from './components/contacts-list/view-contact/vi
     CapitalizePipe,
     UserActivationComponent,
     EditContactComponent,
-    ViewContactComponent
+    ViewContactComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

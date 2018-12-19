@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+<div class="profile-wrapper z-depth-1">
+  <div class="profile-img">
+    <img src="/assets/img/coverpic.jpg" alt="profile image">
+  </div>
+  <div class="profile-details">
+    <form #profileForm="ngForm">
+      <div *ngIf=" error != '' && error " class="error">
+        {{ error | capitalize }}
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m4">
+          <input id="firstName" name="firstName" type="text" class="validate" required #firstName="ngModel" ngModel />
+          <label for="firstName">First Name</label>
+          <span *ngIf=" firstName.invalid && firstName.touched " class="red-text">Firstname is required</span>
+        </div>
+        <div class="input-field col s12 m4">
+          <input id="lastName" name="lastName" type="text" class="validate" required #lastName="ngModel" ngModel />
+          <label for="lastName">Last Name</label>
+          <span *ngIf=" lastName.invalid && lastName.touched " class="red-text">Lastname is required</span>
+        </div>
+        <div class="input-field col s12 m4">
+          <input id="email" name="email" type="email" class="validate" required email #email="ngModel" ngModel />
+          <label for="email">Email</label>
+          <span *ngIf=" email.invalid && email.touched " class="red-text">Email is required and should be valid email</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m4">
+          <input id="birthday" name="birthday" type="date" class="validate" #birthday="ngModel" ngModel />
+          <label for="birthday">Birthday</label>
+        </div>
+        <div class="input-field col s12 m4">
+          <input id="Nationality" name="Nationality" type="text" class="validate" #Nationality="ngModel" ngModel />
+          <label for="Nationality">Nationality</label>
+        </div>
+        <div class="input-field col s12 m4">
+          <input id="language" name="language" type="text" class="validate" language #language="ngModel" ngModel />
+          <label for="language">Language</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m4">
+          <input id="phoneNumber" name="phoneNumber" type="text" class="validate" #phoneNumber="ngModel" ngModel />
+          <label for="phoneNumber">Phone Number</label>
+        </div>
+        <div class="input-field col s12 m4">
+          <input id="job" name="job" type="text" class="validate" #job="ngModel" ngModel />
+          <label for="job">Job</label>
+        </div>
+        <div class="input-field col s12 m4">
+          <input id="company" name="company" type="text" class="validate" company #company="ngModel" ngModel />
+          <label for="company">Company</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea name="address" class="materialize-textarea validate" id="address" ngModel></textarea>
+          <label for="address">Address</label>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col s12">
+          <button [disabled]="profileForm.invalid" class="btn w-100" type="submit">
+            Submit <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

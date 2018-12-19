@@ -16,6 +16,7 @@ import { UserActivationComponent } from './components/user-activation/user-activ
 import { AuthGuard } from "./guards/auth.guard";
 import { AlreadyAuthenticatedGaurd } from "./guards/alreadyAuthenticated";
 import { EditContactComponent } from './components/contacts-list/edit-contact/edit-contact.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const appRoutes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "user/signup" },
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   { path: "user/activate/:token", component: UserActivationComponent },
   { path: "forgot-password", component: ForgotPasswordComponent, canActivate: [AlreadyAuthenticatedGaurd] },
   { path: "reset-password/:token", component: ResetPasswordComponent },
+  { path: "profile", component: ProfileComponent },
   {
     path: "forgot-password-email-notifing",
     component: ForgotPasswordEmailNotifingComponent
